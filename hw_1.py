@@ -1,3 +1,6 @@
+import time
+start = time.time()
+
 # from unsorted import numbers
 from sorted import numbers
 
@@ -22,3 +25,5 @@ for num in to_find:
       print("%d at #%d" % (num, i))
       break
   if not found: print("%d Not found" % num)
+
+print("time : ", time.time() - start)
