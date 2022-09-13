@@ -19,11 +19,18 @@ to_find = [
 
 for num in to_find:
   found = False
-  for i in range(0, len(numbers)):
-    if numbers[i] == num:
+  left = 0
+  right = len(numbers)
+  while left <= right:
+    mid = (left + right) // 2
+    if numbers[mid] == num:
       found = True
-      print("%d at #%d" % (num, i))
-      break
+      print("%d at #%d" % (num, mid))
+      break   
+    if numbers[mid] > num:
+        right = mid - 1
+    else:
+        left = mid + 1
   if not found: print("%d Not found" % num)
 
 print("time : ", time.time() - start)
