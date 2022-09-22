@@ -1,3 +1,13 @@
+에디터들
+-pycharm으로 python관리시 편리 (수업과 무관한 추천)
+-visual studio code(visual studio와 다름, 수업과 무관한 추천)
+-Sublime Text(수업때 사용)
+
+-github sourcetree 추천
+
+-visualizer 사용법 숙달
+
+
 알고리즘의 표현 방식
 -자연어
 -의사코드
@@ -32,9 +42,3 @@ Theta 표기
 시퀀스(?) 서치
 (검색)
 
-에디터들
--pycharm으로 python관리시 편리 (수업과 무관한 추천)
--visual studio code(visual studio와 다름, 수업과 무관한 추천)
--Sublime Text(수업때 사용)
-
--github sourcetree 추천
