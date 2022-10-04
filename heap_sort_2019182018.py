@@ -1,3 +1,7 @@
+import unsorted
+import time
+from random import shuffle
+
 words = [
   'mog', 'jim', 'km', 'lining', 'mingle', 'ell', 'folk', 'melon', 'ln', 'link', 
   'knife', 'fennel', 'loon', 'john', 'ff', 'felloe', 'liking', 'lino', 'om', 'keg', 
@@ -23,30 +27,41 @@ words = [
 ]
 
 
-def heapify(li, idx, n):
-    l = idx * 2
-    r = idx * 2 + 1
-    s_idx = idx
-    if (l <= n and li[s_idx] > li[l]):
-        s_idx = 1
-    if (r <= n and li[s_idx] > li[r]):
-        s_idx = r
-    if s_idx != idx:
-        li[idx], li[s_idx] = li[s_idx], li[idx]
-        return heapify(li, s_idx, n)
+def main(list):
+  count = len(list)
+  last_parent_index = count // 2 - 1
+  for n in range(last_parent_index, -1, -1):
+    heapify(list, n, count)
 
-def heap_sort(v):
-    n = len(v)
-    v = [0]+v
+  last_sort_index = count - 1
+  while last_sort_index > 0:
+    list[0], list[last_sort_index] = list[last_sort_index], list[0]
+    heapify(list, 0, last_sort_index)
+    last_sort_index -= 1
 
-    for i in range(n, 0, -1):
-        heapify(v, i, n)
+  # vis.heapsort(list, 0, 0)
 
-    for i in range(n, 0, -1):
-        print(v[1])
-        v[i], v[1] = v[1], v[i]
-        heapify(v, 1, i-1)
+def heapify(arr, root, size):
+  lc = root * 2 + 1
+  if lc >= size: return
+  child = lc
+  rc = root * 2 + 2
+  if rc < size:
+    if arr[rc] > arr[lc]:
+      child = rc
+
+  if arr[root] < arr[child]:
+    arr[root], arr[child] = arr[child], arr[root]
+    heapify(arr, child, size)
+
+if __name__ == '__main__':
+  list = unsorted.numbers[:13]
 
 
-heap_sort(words)
+  started = time.time()
+  main(words)
+  elapsed = time.time() - started
+  print('Elapsed: %.4fs' % elapsed)
+  print(words)
+
 
