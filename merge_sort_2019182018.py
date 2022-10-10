@@ -21,17 +21,17 @@ words = [
 
 def mergeSort(start=0, end = None):
     if end == None: end = len(words) - 1
-    if ????: return # 재귀호출의 종료조건
+    if start >= end: return # 재귀호출의 종료조건
     mid = (start + end) // 2 # mid is included in left part
     mergeSort(start, mid) #왼쪽
     mergeSort(mid + 1, end)#오른쪽
-    merge(??)
+    merge(start, mid, end)
 
 def merge(start, mid, end): # mid is in left, end = inclusive in right
     # 공간복잡도 = O(n)
     merged = []
     l, r = start, mid + 1
-    while l <= mid and :
+    while l < mid + 1 and r <= end:
         if words[l] <= words[r]:
             merged += [ words[l] ]
             # merged.append(words[i])
@@ -40,12 +40,12 @@ def merge(start, mid, end): # mid is in left, end = inclusive in right
             merged += [ words[r] ]
             r += 1
     if l <= mid: #왼쪽에 선수가 남아있다면
-        merged += words[??:??] # 어디에 +1 을 해야하는지
+        merged += words[l:mid+1] # 어디에 +1 을 해야하는지
     elif r <= end: #오른쪽에 선수가 남아있다면
-        merged += words[??:??]
+        merged += words[r:end+1]
 
 
-    words[??:??] = merged #
+    words[start:end+1] = merged #
 
 print(words)
 mergeSort()

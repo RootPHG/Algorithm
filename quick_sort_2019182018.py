@@ -18,18 +18,19 @@ words = [
 ]
 
 def insertionSort(start, end):
-    for i in range(start + 1, end + 1)
+    global array
+    for i in range(start + 1, end + 1):
         v = array[i] # i위치의 v 값이 주인공
         j = i - 1 # v 와 비교를 시작할 위치
-        while start <= j and j?? > v:
-            array[??] = array[??] # 오른쪽으로 밀어준다
+        while start <= j and array[j] > v:
+            array[j+1] = array[j] # 오른쪽으로 밀어준다
             j -= 1
 
-        (j + 1) = 
+        array[j + 1] = v
 
 def quickSort(start, end): #end = inclusive
-    if ???: return # 재귀호출의 종료조건
-    if ?????: # size of this array <= 10
+    if start >= end: return # 재귀호출의 종료조건
+    if end - start <= 10: # size of this array <= 10
         insertionSort(start, end)
     pi = partition(start, end)
     quickSort(start, pi - 1)
@@ -38,8 +39,9 @@ def quickSort(start, end): #end = inclusive
 from random import randint
 
 def partition(start, end): #end = inclusive
+    global array
     ri = randint(start, end)
-    array[start], array[ri] = array[start]
+    array[start], array[ri] = array[ri], array[start]
     pv = array[start]
 
     p, q = start, end + 1
@@ -47,18 +49,18 @@ def partition(start, end): #end = inclusive
         #find p
         while True:
             p += 1
-            if p > end or array[p] > pv: break
+            if p > end or array[p] >= pv: break
 
         while True:
             q -= 1
-            if ?? or ???: break
+            if q < start or array[q] <= pv: break
 
-        if p >= q: #더이상 바꿀게 없다
+        if p >= q: break #더이상 바꿀게 없다
 
-        # swap @p and @q
-        ????
+        array[p], array[q] = array[q], array[p]
 
     # swap @start and @q
+    array[start], array[q] = array[q], array[start]
     return q
 
 
